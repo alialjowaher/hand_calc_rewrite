@@ -43,7 +43,7 @@ const Content = () => {
             <div className="col-12">
                 <div className="row d-flex justify-content-between text-center mb-3">
                     <div className="col h4">مجموع الجولات</div>
-                    <div className="col h4 pt-3">الجولة الحالية</div>
+                    <div className="col h4 ">الجولة الحالية</div>
                 </div>
                 <div className="row d-flex justify-content-between text-center">
                     <div className="col h4">1</div>
@@ -55,13 +55,13 @@ const Content = () => {
                 </div>
             </div>
           
-            <div className="bg-primary text-white rounded fixed-bottom icon-bar">
-            <div className="row text-center justify-content-between pt-2 pb-2">
-                <div className="col btn btn-primary"><FontAwesomeIcon icon={faList} /></div>
-                <div className="col btn btn-primary" onClick={handleShow}><FontAwesomeIcon icon={faPlus} /></div>
-                <div className="col btn btn-primary"><FontAwesomeIcon icon={faHome} /></div>
+            <div className="bg-white text-white rounded-top fixed-bottom icon-bar">
+                <div className="row text-center justify-content-between pt-2 pb-2">
+                <div className="col btn btn-white"><FontAwesomeIcon icon={faList} /></div>
+                <div className="col-2 btn btn-primary rounded" onClick={handleShow}><FontAwesomeIcon icon={faPlus} /></div>
+                <div className="col btn btn-white"><FontAwesomeIcon icon={faHome} /></div>
                 </div>
-        </div>
+            </div>
 
 
 
