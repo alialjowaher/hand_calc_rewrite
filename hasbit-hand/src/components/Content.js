@@ -1,9 +1,28 @@
-import React from 'react'
-import {ProgressBar} from 'react-bootstrap'
+import {React, useState} from 'react'
+import {ProgressBar,Container,Button} from 'react-bootstrap'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faList } from '@fortawesome/free-solid-svg-icons'
+import AddJawlah from './AddJawlah'
+
+
+
 const Content = () => {
     const progresBarVal = (2/7 * 100)
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
-        <div className="content fluid">
+        <Container fluid className="overflow-hidden">
+              <AddJawlah
+       show={show}
+       onHide={handleClose}
+       backdrop=""
+       keyboard={false}
+       />
             <div className="row p-4 card shadow m-3 rounded">
             <div className="col-12 ">
                 <div className="row d-flex justify-content-between text-center mb-3">
@@ -35,7 +54,18 @@ const Content = () => {
                 <ProgressBar className="m-0 p-0" dir="RTL" now={progresBarVal} />
                 </div>
             </div>
+          
+            <div className="bg-primary text-white rounded fixed-bottom icon-bar">
+            <div className="row text-center justify-content-between pt-2 pb-2">
+                <div className="col btn btn-primary"><FontAwesomeIcon icon={faList} /></div>
+                <div className="col btn btn-primary" onClick={handleShow}><FontAwesomeIcon icon={faPlus} /></div>
+                <div className="col btn btn-primary"><FontAwesomeIcon icon={faHome} /></div>
+                </div>
         </div>
+
+
+
+        </Container>
     )
 
 

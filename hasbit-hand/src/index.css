@@ -6,6 +6,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  padding-right:0px !important;
+  margin-right:0px !important;
+    
+}
+.icon-bar{
+  padding-right:0px !important;
+  margin-right:0px !important;
+    
 }
 
 code {

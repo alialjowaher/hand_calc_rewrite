@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Header from './components/Header';
 import Content from './components/Content'
-import Footer from './components/Footer'
+
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
 //
@@ -22,7 +22,7 @@ export default function BasicExample() {
     <div>
       <Header />
       <Content />
-      <Footer />
+      
     
     </div>
     // <Router>
