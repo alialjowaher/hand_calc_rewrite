@@ -5,7 +5,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 // import Form from 'react-bootstrap/Form'
 // import ToggleButton from 'react-bootstrap/ToggleButton'
 import { ToggleButton, Form } from 'react-bootstrap'
-
+import db from '../db'
 const AddJawlah = (props) => {
 
   const [winnerTeamVal, setWinnerTeamVal] = useState("");
@@ -137,7 +137,7 @@ const AddJawlah = (props) => {
 
   }
 
-  const handleSubmit = (evt) => {
+   const handleSubmit = (evt) => {
     const winValues = [
       { winType: 'khlosSafi', winner_team: '', losser_team: '', winner_value: -30, losser_value: 300, nazil_count: 0, nazil_total: 0, isTasjilah: false },
       { winType: 'dabalSafi', winner_team: '', losser_team: '', winner_value: -60, losser_value: 600, nazil_count: 0, nazil_total: 0, isTasjilah: false },
@@ -183,7 +183,27 @@ const AddJawlah = (props) => {
           break;
       }
     };
+    
+    
+    async function saveJwalah() {
+      try {
+          await db.jawlatStore.add({
+            winType : finalWinType,
+            winner_team: jawlahResult[0].winner_team,
+            losser_Team: jawlahResult[0].losser_team,
+            winner_value: jawlahResult[0].winner_value,
+            losser_value: jawlahResult[0].losser_value,
+            nazil_count: jawlahResult[0].nazil_count,
+            nazil_total: jawlahResult[0].nazil_total,
+            isTasjilah: jawlahResult[0].isTasjilah
 
+          })
+      }catch (error) {
+        console.log('failed to add');
+      }
+    }
+
+    saveJwalah();
     evt.preventDefault();
     props.onHide();
     console.log(jawlahResult);
