@@ -6,6 +6,9 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faList } from '@fortawesome/free-solid-svg-icons'
 import AddJawlah from './AddJawlah'
+import db from '../db'
+import { useLiveQuery } from 'dexie-react-hooks';
+
 
 
 
@@ -15,6 +18,21 @@ const Content = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    const jawlats = useLiveQuery(
+        async() => {
+            const jawlats = await db.jawlatStore.toArray()
+            return (jawlats)
+        },
+        )    
+        
+    
+    //lanaTotal 
+    //lahomTotal
+    //farq
+    let jawaltCount = useLiveQuery(() => db.jawlatStore.where('isTasjilah').equals('false').count());
+    let allJawlatCount =  useLiveQuery(() => db.jawlatStore.count());
+  
     return (
         <Container fluid className="overflow-hidden">
               <AddJawlah
@@ -46,8 +64,8 @@ const Content = () => {
                     <div className="col h4 ">الجولة الحالية</div>
                 </div>
                 <div className="row d-flex justify-content-between text-center">
-                    <div className="col h4">1</div>
-                    <div className="col h4">1</div>
+                    <div className="col h4">{allJawlatCount}</div>
+                    <div className="col h4">{jawaltCount}</div>
                 </div>
                 </div>  
                 <div className="row m-0 pt-3 p-0">
