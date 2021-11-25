@@ -139,12 +139,12 @@ const AddJawlah = (props) => {
 
    const handleSubmit = (evt) => {
     const winValues = [
-      { winType: 'khlosSafi', winner_team: '', losser_team: '', winner_value: -30, losser_value: 300, nazil_count: 0, nazil_total: 0, isTasjilah: false },
-      { winType: 'dabalSafi', winner_team: '', losser_team: '', winner_value: -60, losser_value: 600, nazil_count: 0, nazil_total: 0, isTasjilah: false },
-      { winType: 'khlosNotSafi', winner_team: '', losser_team: '', winner_value: -30, losser_value: 0, nazil_count: 0, nazil_total: 0, isTasjilah: false },
-      { winType: 'dabalNotSafi', winner_team: '', losser_team: '', winner_value: -60, losser_value: 0, nazil_count: 0, nazil_total: 0, isTasjilah: false },
-      { winType: 'tasjilahKhlos', winner_team: '', losser_team: '', winner_value: 0, losser_value: 600, nazil_count: 0, nazil_total: 0, isTasjilah: true },
-      { winType: 'tasjilahDabal', winner_team: '', losser_team: '', winner_value: 0, losser_value: 300, nazil_count: 0, nazil_total: 0, isTasjilah: true },
+      { winType: 'khlosSafi', winner_team: '', losser_team: '', winner_value: -30, losser_value: 300, nazil_count: 0, nazil_total: 0, isTasjilah: 'false' },
+      { winType: 'dabalSafi', winner_team: '', losser_team: '', winner_value: -60, losser_value: 600, nazil_count: 0, nazil_total: 0, isTasjilah: 'false' },
+      { winType: 'khlosNotSafi', winner_team: '', losser_team: '', winner_value: -30, losser_value: 0, nazil_count: 0, nazil_total: 0, isTasjilah: 'false' },
+      { winType: 'dabalNotSafi', winner_team: '', losser_team: '', winner_value: -60, losser_value: 0, nazil_count: 0, nazil_total: 0, isTasjilah: 'false' },
+      { winType: 'tasjilahKhlos', winner_team: '', losser_team: '', winner_value: 0, losser_value: 600, nazil_count: 0, nazil_total: 0, isTasjilah: 'true' },
+      { winType: 'tasjilahDabal', winner_team: '', losser_team: '', winner_value: 0, losser_value: 300, nazil_count: 0, nazil_total: 0, isTasjilah: 'true' },
 
     ]
 
@@ -171,7 +171,6 @@ const AddJawlah = (props) => {
 
     if (jawlahResult[0].nazil_count !== 0) {
       const nazilFilter = nazil_Values.filter((v) => v.nazil === parseInt(nazilCountVal));
-      console.log(nazilFilter);
       switch (jawlahResult[0].winType) {
         case "khlosNotSafi":
           jawlahResult[0].losser_value = (parseInt(nazilFilter[0].subTotal) + parseInt(nazilTotalVal));
@@ -204,9 +203,9 @@ const AddJawlah = (props) => {
     }
 
     saveJwalah();
-    evt.preventDefault();
+    // evt.preventDefault();
     props.onHide();
-    console.log(jawlahResult);
+    // console.log(jawlahResult);
   }
 
 
