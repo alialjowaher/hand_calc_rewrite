@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { ProgressBar, Container, Button } from 'react-bootstrap'
+import { ProgressBar, Container } from 'react-bootstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
@@ -10,27 +10,28 @@ import db from '../db'
 import { useLiveQuery } from 'dexie-react-hooks';
 
 
-
-
 const Content = () => {
     const progresBarVal = (2 / 7 * 100)
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const jawlats = useLiveQuery(() => db.jawlatStore.toArray(function (result) {
-        const count = result.reduce((counter, { winType }) =>
-            winType === "dabalSafi" ? (counter += 1) : counter, 0);
-        return count;
+    const lanaTotal = useLiveQuery(() => db.jawlatStore.toArray(function (result) {
+        const count = result.reduce((counter, { winner_team, losser_team, winner_value, losser_value }) =>
+            winner_team === "lana" || losser_team === "lana" ? (counter += winner_value) : (counter += losser_value), 0);
+        return String(count);
     }));
 
+    const lahomTotal = useLiveQuery(() => db.jawlatStore.toArray(function (result) {
+        const count = result.reduce((counter, { winner_team, losser_team, winner_value, losser_value }) =>
+            winner_team === "lahom" || losser_team === "lahom" ? (counter += winner_value) : (counter += losser_value), 0);
+        return String(count);
 
-    let lanaTotal = jawlats;
-    //lahomTotal
-    //farq
-    let allJawlatCount = useLiveQuery(() => db.jawlatStore.count());
-    let jawaltCount = useLiveQuery(() => db.jawlatStore.where('isTasjilah').equals('false').count());
+    }));
+
+    const farq = Math.abs(Math.abs(lanaTotal) - Math.abs(lahomTotal)).toString()
+    const allJawlatCount = useLiveQuery(() => db.jawlatStore.count());
+    const jawaltCount = useLiveQuery(() => db.jawlatStore.where('isTasjilah').equals('false').count());
 
     return (
         <Container fluid className="overflow-hidden">
@@ -50,8 +51,8 @@ const Content = () => {
 
                     </div>
                     <div className="row d-flex justify-content-between text-center">
-                        <div className="col-4 h4">360</div>
-                        <div className="col-4 h4 text-danger">1200</div>
+                        <div className="col-4 h4">{lahomTotal}</div>
+                        <div className="col-4 h4 text-danger">{farq}</div>
                         <div className="col-4 h4">{lanaTotal}</div>
                     </div>
                 </div>
@@ -85,6 +86,9 @@ const Content = () => {
         </Container>
     )
 
+
+    // list all round below  
+    // delete last round
 
 }
 
