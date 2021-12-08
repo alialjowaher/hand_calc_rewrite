@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRedo } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap'
 import db from '../db'
-import { useLiveQuery } from 'dexie-react-hooks';
 
 
 const Header = () => {

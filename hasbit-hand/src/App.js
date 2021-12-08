@@ -22,8 +22,8 @@ export default function BasicExample() {
     <div>
       <Header />
       <Content />
-      
-    
+
+
     </div>
     // <Router>
     //   <div>
@@ -47,12 +47,12 @@ export default function BasicExample() {
     //       matches the current URL. Use a <Switch> any time
     //       you have multiple routes, but you want only one
     //       of them to render at a time
-         //}
+    //}
     //     <Routes>
     //     <Route path="/" component={Home} />
     //     <Route path="/dashboard" component={Dashboard} />
     //     <Route path="/addJwlah" component={AddJawlah} />
-          
+
     //     </Routes>
     //   </div>
     // </Router>
@@ -82,7 +82,7 @@ export default function BasicExample() {
 //   return (
 //     <div>
 //       <h2>Dashboard</h2>
-      
+
 //     </div>
 //   );
 // }

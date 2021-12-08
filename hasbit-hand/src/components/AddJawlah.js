@@ -224,7 +224,7 @@ const AddJawlah = (props) => {
 
 
   return (
-    <Modal className=""
+    <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -293,9 +293,6 @@ const AddJawlah = (props) => {
         </Form>
 
       </Modal.Body>
-      {/* <Modal.Footer className="justify-content-center">
-            
-        </Modal.Footer> */}
 
     </Modal>
   );
